@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActualEndDate" xml:space="preserve">
+    <value>ActualEndDate</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
   <data name="EndingDate" xml:space="preserve">
     <value>Ending Date</value>
+  </data>
+  <data name="InvalidStartingEndingDate" xml:space="preserve">
+    <value>InvalidStartingEndingDate</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>

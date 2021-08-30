@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagementSystem.Areas.Admin.ViewModel;
 using TaskManagementSystem.Models;
+using TaskManagementSystem.Models.ViewModels;
 using TaskManagementSystem.ServiceClasses;
 
 namespace TaskManagementSystem.Areas.Admin.Controllers
@@ -50,5 +51,29 @@ namespace TaskManagementSystem.Areas.Admin.Controllers
                                                  }).ToList();
             return View("ProjectReport", resultmodel);
         }
-    }
+        public IActionResult TaskReport()
+        {
+            return View(new ProjectReportDataViewModel { ProjectReportData= new List<ProjectViewModel>()});
+        }
+[HttpPost]
+public IActionResult RetreiveTaskReportData(ProjectReportDataViewModel model)
+{
+    TaskReportDataViewModel resultmodel = new TaskReportDataViewModel();
+    resultmodel.SearchExpression = model.SearchExpression;
+    resultmodel.TaskReportData = (from Task in
+                                         _Context.Tasks.Where(w => w.TaskName.Contains(model.SearchExpression) || model.SearchExpression == null)
+                                     select new TaskViewModel
+                                     {
+                                         Id = Task.Id,
+                                         TaskName = Task.TaskName,
+                                         Closed = Task.Closed,
+                                         ActualEndDate = Task.ActualEndDate==null?"":((DateTime) Task.ActualEndDate).ToString("dd/MM/yyyy"),
+                                         ActualStartDate = Task.ActualStartDate == null ? "" : ((DateTime)Task.ActualStartDate).ToString("dd/MM/yyyy"),
+                                         StartDate = Task.StartDate.ToString("dd/MM/yyyy"),
+                                      
+
+                                     }).ToList();
+    return View("ProjectReport", resultmodel);
+}
+    } 
 }

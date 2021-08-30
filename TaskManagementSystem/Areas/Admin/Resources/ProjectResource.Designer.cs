@@ -19,7 +19,7 @@ namespace TaskManagementSystem.Areas.Admin.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ProjectResource {
@@ -61,11 +61,38 @@ namespace TaskManagementSystem.Areas.Admin.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ActualEndDate.
+        /// </summary>
+        public static string ActualEndDate {
+            get {
+                return ResourceManager.GetString("ActualEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ending Date.
         /// </summary>
         public static string EndingDate {
             get {
                 return ResourceManager.GetString("EndingDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InvalidStartingEndingDate.
+        /// </summary>
+        public static string InvalidStartingEndingDate {
+            get {
+                return ResourceManager.GetString("InvalidStartingEndingDate", resourceCulture);
             }
         }
         

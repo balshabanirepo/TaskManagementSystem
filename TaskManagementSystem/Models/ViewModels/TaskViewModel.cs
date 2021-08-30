@@ -47,7 +47,9 @@ namespace TaskManagementSystem.Models.ViewModels
             [Display(Name = "Actual Start date")]
             public string ActualStartDate { get; set; }
 
-            public string EndDate { get; set; }
+        public string ActualEndDate { get; set; }
+
+        public string EndDate { get; set; }
 
 
 

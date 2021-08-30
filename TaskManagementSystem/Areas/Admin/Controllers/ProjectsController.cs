@@ -10,6 +10,7 @@ using TaskManagementSystem.ServiceClasses;
 using TaskManagementSystem.Areas.Admin.Models;
 using TaskManagementSystem.Areas.Admin.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TaskManagementSystem.Areas.Admin.Controllers
@@ -21,11 +22,13 @@ namespace TaskManagementSystem.Areas.Admin.Controllers
         // GET: /<controller>/
         private TaskManagementSystemDbContext _Context;
         private IProjectsService _service;
+        IStringLocalizer<Resources.ProjectResource> _ProjectStringLocalizer;
 
-        public ProjectsController(TaskManagementSystemDbContext Context, IProjectsService service)
+        public ProjectsController(TaskManagementSystemDbContext Context, IProjectsService service, IStringLocalizer<Resources.ProjectResource> ProjectStringLocalizer)
         {
             _Context = Context;
             _service = service;
+            _ProjectStringLocalizer = ProjectStringLocalizer;
 
         }
         public IActionResult Index()
@@ -87,7 +90,7 @@ namespace TaskManagementSystem.Areas.Admin.Controllers
             EndingDate = Request.Form["EndingDate"];
             if(DateTime.ParseExact(EndingDate, "dd/MM/yyyy", CultureInfo.InvariantCulture) < DateTime.ParseExact(StartingDate, "dd/MM/yyyy", CultureInfo.InvariantCulture))
             {
-                ModelState.AddModelError("", "Project ending date can not be less than project starting date");
+                ModelState.AddModelError("", _ProjectStringLocalizer["InvalidStartingEndingDate"].Value);
             }
             if (ModelState.IsValid)
             {
